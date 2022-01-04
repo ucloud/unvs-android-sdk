@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/txt_log_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:textColor="@color/unvs_gray"
+        android:textSize="12sp"
+        tools:text="asdfas" />
+
+    <TextView
+        android:id="@+id/txt_log_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="1dp"
+        android:textColor="@android:color/black"
+        android:textSize="12sp"
+        tools:text="Content" />
+</LinearLayout>

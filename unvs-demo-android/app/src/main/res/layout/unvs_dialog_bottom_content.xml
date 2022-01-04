@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/img_unvs_logo"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_ucloud_logo" />
+
+    <TextView
+        android:id="@+id/unvs_txt_change_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="6dp"
+        android:text="@string/unvs_change_account"
+        android:textColor="@color/color_unvs_text_btn_press"
+        android:textSize="12sp" />
+
+    <TextView
+        android:id="@+id/unvs_txt_supporter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="310dp"
+        android:gravity="center"
+        android:text=""
+        android:textColor="@color/unvs_gray"
+        android:textSize="10sp" />
+
+    <include
+        layout="@layout/unvs_3rd_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="380dp" />
+
+
+</RelativeLayout>

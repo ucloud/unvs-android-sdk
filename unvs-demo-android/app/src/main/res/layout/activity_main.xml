@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:padding="8dp"
+    tools:context=".MainActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_logs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/container_btns"
+        android:layout_alignParentTop="true" />
+
+    <LinearLayout
+        android:id="@+id/container_btns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/edit_timeout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="edit timeout value (ms)"
+            android:inputType="number"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btn_timeout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set timeout" />
+
+        <Button
+            android:id="@+id/btn_preload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Preload" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_login"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:layout_weight="1"
+                android:text="Auth"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_login_land"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:layout_weight="1"
+                android:text="Auth Land"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_login_dialog"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:layout_weight="1"
+                android:text="AuthDialog"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btn_login_dialog_bottom"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:layout_weight="1"
+                android:text="AuthDialogBt"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_verify_mobile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Verify" />
+    </LinearLayout>
+
+</RelativeLayout>

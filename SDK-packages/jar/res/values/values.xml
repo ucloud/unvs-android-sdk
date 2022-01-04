@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="unvs_accent">#00897B</color>
+    <color name="unvs_accent_dark">#00695C</color>
+    <color name="unvs_accent_unable">#4DB6AC</color>
+    <color name="unvs_button_normal_end">#3860f4</color>
+    <color name="unvs_button_normal_start">#6488fc</color>
+    <color name="unvs_button_pressed">#3357df</color>
+    <color name="unvs_button_unable">#7897FA</color>
+    <color name="unvs_dialog_background">#FFFFFFFF</color>
+    <color name="unvs_gray">#565656</color>
+    <color name="unvs_number_text">#526075</color>
+    <color name="unvs_primary">#1E88E5</color>
+    <color name="unvs_primary_dark">#1565C0</color>
+    <color name="unvs_primary_unable">#64B5F6</color>
+    <color name="unvs_secondary">#00ACC1</color>
+    <color name="unvs_secondary_dark">#00838F</color>
+    <color name="unvs_secondary_unable">#4DD0E1</color>
+    <color name="unvs_toast_bg">#88595959</color>
+    <dimen name="umcsdk_btn_height">40dp</dimen>
+    <dimen name="umcsdk_capaids_margin">25dp</dimen>
+    <dimen name="umcsdk_dimen_eight">8dp</dimen>
+    <dimen name="umcsdk_dimen_fifteen">15dp</dimen>
+    <dimen name="umcsdk_dimen_ten">12dp</dimen>
+    <dimen name="umcsdk_dimen_twenty">20dp</dimen>
+    <dimen name="umcsdk_font_eighteen">18sp</dimen>
+    <dimen name="umcsdk_font_eleven">11sp</dimen>
+    <dimen name="umcsdk_font_fourteen">14sp</dimen>
+    <dimen name="umcsdk_font_seventeen">17sp</dimen>
+    <dimen name="umcsdk_font_sixteen">16sp</dimen>
+    <dimen name="umcsdk_font_ten">10sp</dimen>
+    <dimen name="umcsdk_font_thirteen">13sp</dimen>
+    <dimen name="umcsdk_font_twenteen">12sp</dimen>
+    <dimen name="umcsdk_loginbtn_left">5dp</dimen>
+    <dimen name="umcsdk_loginbtn_margin">24dip</dimen>
+    <dimen name="umcsdk_min_width">280dp</dimen>
+    <dimen name="umcsdk_mobilelogo_margin">62dp</dimen>
+    <dimen name="umcsdk_padding_account">50dp</dimen>
+    <dimen name="umcsdk_padding_container">5dp</dimen>
+    <dimen name="umcsdk_server_checkbox_size">9sp</dimen>
+    <dimen name="umcsdk_server_clause_margin">15dip</dimen>
+    <dimen name="umcsdk_smscode_login_margin">15dip</dimen>
+    <dimen name="umcsdk_smscode_margin">30dp</dimen>
+    <dimen name="umcsdk_title_height">50dp</dimen>
+    <dimen name="umcsdk_version_margin">20dp</dimen>
+    <string name="umcsdk_account_login">使用历史帐号快速登录</string>
+    <string name="umcsdk_account_name">中国移动互联网通行证</string>
+    <string name="umcsdk_auto_login">本机号码登录</string>
+    <string name="umcsdk_auto_login_ing">本机号码登录中</string>
+    <string name="umcsdk_capability">您的手机号码、号码状态等信息</string>
+    <string name="umcsdk_capaids_text">该应用请求获取以下权限</string>
+    <string name="umcsdk_cmcc_wap">如果发送短信验证，此短信免费</string>
+    <string name="umcsdk_cmcc_wifi">自动发送短信验证，此短信免费</string>
+    <string name="umcsdk_get">获得</string>
+    <string name="umcsdk_get_sms_code">获取验证码</string>
+    <string name="umcsdk_getphonenumber_timeout">获取本机号码超时！</string>
+    <string name="umcsdk_getsmscode_failure">获取短信验证码失败</string>
+    <string name="umcsdk_hint_passwd">请输入验证码</string>
+    <string name="umcsdk_hint_username">请输入手机号码</string>
+    <string name="umcsdk_local_mobile">(本机号码)</string>
+    <string name="umcsdk_login">登录</string>
+    <string name="umcsdk_login_account_info_expire">帐号信息已过期，请使用短信验证码登录</string>
+    <string name="umcsdk_login_failure">获取本机号码失败，请使用短信验证码登录</string>
+    <string name="umcsdk_login_ing">登录中</string>
+    <string name="umcsdk_login_limit">您登录过于频繁，请使用短信验证码登录</string>
+    <string name="umcsdk_login_other_number">使用其它号码登录</string>
+    <string name="umcsdk_login_owner_number">本机号码一键登录</string>
+    <string name="umcsdk_login_success">登录成功</string>
+    <string name="umcsdk_network_error">网络连接异常</string>
+    <string name="umcsdk_oauth_version_name">v1.4.1</string>
+    <string name="umcsdk_openapi_error">开放平台错误</string>
+    <string name="umcsdk_other_wap">支持联通、电信用户，可能发送免费验证短信</string>
+    <string name="umcsdk_other_wifi">支持联通、电信用户，免费发送验证短信</string>
+    <string name="umcsdk_permission">拒绝授权将无法继续当前操作,是否重新提交授权？</string>
+    <string name="umcsdk_permission_no">否</string>
+    <string name="umcsdk_permission_ok">是</string>
+    <string name="umcsdk_permission_tips">提示</string>
+    <string name="umcsdk_phonenumber_failure">请输入正确的手机号码！</string>
+    <string name="umcsdk_pref_about">关于</string>
+    <string name="umcsdk_pref_item1">账户安全保护</string>
+    <string name="umcsdk_pref_item2">隐私权</string>
+    <string name="umcsdk_pref_value1">您的中国移动互联网账户已受安全账户机制保护。</string>
+    <string name="umcsdk_pref_value2">中国移动互联网账户不会同步您的隐私信息</string>
+    <string name="umcsdk_sms_login">短信验证码登录</string>
+    <string name="umcsdk_smscode_error">请输入正确的短信验证码</string>
+    <string name="umcsdk_smscode_wait_time">秒后重新获取</string>
+    <string name="umcsdk_smslogin_failure">短信验证码登录失败</string>
+    <string name="umcsdk_sure">登录代表你已同意《中国移动认证服务条款》</string>
+    <string name="umcsdk_switch_account">切换账号</string>
+    <string name="umcsdk_verify_identity">正在校验您的身份,请稍候...</string>
+    <string name="umcsdk_version_name">和</string>
+    <string name="unvs_change_account">切换账号</string>
+    <string name="unvs_login_with_other_method">其他方式登录</string>
+    <string name="unvs_login_with_qq">QQ</string>
+    <string name="unvs_login_with_wechat">微信</string>
+    <string name="unvs_login_with_weibo">微博</string>
+    <string name="unvs_one_key_to_log_in">一键登录</string>
+    <string name="unvs_supporter_cmcc">中国移动提供认证服务</string>
+    <string name="unvs_supporter_ctcc">中国电信提供认证服务</string>
+    <string name="unvs_supporter_cucc">中国联通提供认证服务</string>
+    <style name="Unvs.Activity" parent="Theme.MaterialComponents.DayNight">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/unvs_primary</item>
+        <item name="colorPrimaryDark">@color/unvs_primary_dark</item>
+        <item name="colorPrimaryVariant">@color/unvs_primary_unable</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/unvs_secondary</item>
+        <item name="colorSecondaryVariant">@color/unvs_secondary_unable</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+        <!-- Accent brand color. -->
+        <item name="colorAccent">@color/unvs_accent</item>
+
+        <item name="textAllCaps">false</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="Unvs.Activity.NoActionBar" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/unvs_primary</item>
+        <item name="colorPrimaryDark">@color/unvs_primary_dark</item>
+        <item name="colorPrimaryVariant">@color/unvs_primary_unable</item>
+        <item name="colorOnPrimary">@android:color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/unvs_secondary</item>
+        <item name="colorSecondaryVariant">@color/unvs_secondary_unable</item>
+        <item name="colorOnSecondary">@android:color/white</item>
+        <!-- Accent brand color. -->
+        <item name="colorAccent">@color/unvs_accent</item>
+
+        <item name="textAllCaps">false</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" ns1:targetApi="l">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+    <style name="Unvs.Dialog" parent="Theme.AppCompat.Dialog.Alert">
+        <item name="android:windowBackground">@color/unvs_dialog_background</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+</resources>

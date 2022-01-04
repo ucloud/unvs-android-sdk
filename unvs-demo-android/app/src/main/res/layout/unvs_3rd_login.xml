@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="42dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/line1"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/unvs_txt_login_other_method"
+            android:background="@color/unvs_gray" />
+
+        <TextView
+            android:id="@+id/unvs_txt_login_other_method"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginHorizontal="18dp"
+            android:text="@string/unvs_login_with_other_method"
+            android:textColor="@color/unvs_gray"
+            android:textSize="12sp" />
+
+        <View
+            android:id="@+id/line2"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/unvs_txt_login_other_method"
+            android:background="@color/unvs_gray" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="48dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/unvs_btn_wechat"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_wechat" />
+
+        <ImageButton
+            android:id="@+id/unvs_btn_qq"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_qq" />
+
+        <ImageButton
+            android:id="@+id/unvs_btn_weibo"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginHorizontal="8dp"
+            android:background="@null"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_weibo" />
+    </LinearLayout>
+
+</LinearLayout>
