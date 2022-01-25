@@ -34,6 +34,21 @@ implementation files('libs/unvs-sdk-android.aar')
 -keep class com.cmic.sso.sdk.**{*;}
 ```
 
+## 权限申明
+``` xml
+// 添加必要的权限支持:
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+
+// 添加建议的权限支持：
+<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+```
+
+#### 注意
+> **强烈建议开发者申请本权限，本权限主要用于在双卡情况下，更精准的获取数据流量卡的运营商类型，缺少该权限，存在取号失败概率上升的风险。** 同时，用户申请此权限时，请按照国家相关法规向用户说明权限的用途，尊重用户个人隐私。
+
 ## 配置 UNVS ID
 * AndroidManifest.xml
 
