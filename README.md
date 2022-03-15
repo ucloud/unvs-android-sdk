@@ -30,24 +30,9 @@ implementation files('libs/unvs-sdk-android.aar')
     public static ** valueOf(java.lang.String);
 }
 
--dontwarn com.cmic.sso.sdk.**
--keep class com.cmic.sso.sdk.**{*;}
+-dontwarn com.cmic.gen.sdk.**
+-keep class com.cmic.gen.sdk.**{*;}
 ```
-
-## 权限申明
-``` xml
-// 添加必要的权限支持:
-<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
-
-// 添加建议的权限支持：
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
-```
-
-#### 注意
-> **强烈建议开发者申请本权限，本权限主要用于在双卡情况下，更精准的获取数据流量卡的运营商类型，缺少该权限，存在取号失败概率上升的风险。** 同时，用户申请此权限时，请按照国家相关法规向用户说明权限的用途，尊重用户个人隐私。
 
 ## 配置 UNVS ID
 * AndroidManifest.xml
@@ -58,6 +43,12 @@ implementation files('libs/unvs-sdk-android.aar')
         android:name="unvs.id"
         android:value="Your ID" />
     ...
+    
+    <activity
+            android:name="com.cmic.gen.sdk.view.GenLoginAuthActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind" />
 </application>
 ```
 > 初始化
@@ -257,6 +248,8 @@ public Builder setPrivacyOffsetY_B(int privacyOffsetY_B)
 public Builder setPrivacyBookSymbol(boolean haveBookSymbol)
 // 设置复选框相对右侧协议文案居上或者居中，默认居上。0-居上，1-居中
 public Builder setCheckBoxLocation(int checkBoxLocation)
+// 设置协议政策勾选框的勾选状态切换回调
+public Builder setPrivacyCheckedChangeListener(UnvsPrivacyCheckedChangeListener listener)
 // 设置授权页的进场动画
 public Builder setAuthPageActIn(String authPageActIn, String activityOut)
 // 设置授权页的退场动画

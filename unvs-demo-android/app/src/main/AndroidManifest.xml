@@ -34,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.cmic.sso.sdk.view.LoginAuthActivity"
+            android:name="com.cmic.gen.sdk.view.GenLoginAuthActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleTop"
             android:screenOrientation="behind"

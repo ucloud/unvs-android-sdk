@@ -13,7 +13,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -23,7 +22,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.cmic.sso.sdk.view.LoginAuthActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +30,6 @@ import cn.ucloud.unvs.sdk.bean.NetworkInfo;
 import cn.ucloud.unvs.sdk.bean.VerifyMobileBean;
 import cn.ucloud.unvs.sdk.listener.UnvsRegisterListener;
 import cn.ucloud.unvs.sdk.listener.UnvsVerifyMobileListener;
-import cn.ucloud.unvs.sdk.ThemeConfig;
 import cn.ucloud.unvs.sdk.util.PermissionUtil;
 import cn.ucloud.unvs.sdk.UnvsManager;
 import cn.ucloud.unvs.sdk.bean.PreloadResultBean;

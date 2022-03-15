@@ -30,8 +30,8 @@ implementation files('libs/unvs-sdk-android.aar')
     public static ** valueOf(java.lang.String);
 }
 
--dontwarn com.cmic.sso.sdk.**
--keep class com.cmic.sso.sdk.**{*;}
+-dontwarn com.cmic.gen.sdk.**
+-keep class com.cmic.gen.sdk.**{*;}
 ```
 
 ## 配置 UNVS ID
@@ -43,6 +43,12 @@ implementation files('libs/unvs-sdk-android.aar')
         android:name="unvs.id"
         android:value="Your ID" />
     ...
+    
+    <activity
+            android:name="com.cmic.gen.sdk.view.GenLoginAuthActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTop"
+            android:screenOrientation="behind" />
 </application>
 ```
 > 初始化
@@ -242,6 +248,8 @@ public Builder setPrivacyOffsetY_B(int privacyOffsetY_B)
 public Builder setPrivacyBookSymbol(boolean haveBookSymbol)
 // 设置复选框相对右侧协议文案居上或者居中，默认居上。0-居上，1-居中
 public Builder setCheckBoxLocation(int checkBoxLocation)
+// 设置协议政策勾选框的勾选状态切换回调
+public Builder setPrivacyCheckedChangeListener(UnvsPrivacyCheckedChangeListener listener)
 // 设置授权页的进场动画
 public Builder setAuthPageActIn(String authPageActIn, String activityOut)
 // 设置授权页的退场动画
