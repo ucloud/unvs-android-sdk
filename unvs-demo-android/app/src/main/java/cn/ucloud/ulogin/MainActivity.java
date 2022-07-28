@@ -28,6 +28,10 @@ import java.util.List;
 
 import cn.ucloud.unvs.sdk.bean.NetworkInfo;
 import cn.ucloud.unvs.sdk.bean.VerifyMobileBean;
+import cn.ucloud.unvs.sdk.listener.UnvsBackPressListener;
+import cn.ucloud.unvs.sdk.listener.UnvsCheckBoxListener;
+import cn.ucloud.unvs.sdk.listener.UnvsLoginClickListener;
+import cn.ucloud.unvs.sdk.listener.UnvsPrivacyCheckedChangeListener;
 import cn.ucloud.unvs.sdk.listener.UnvsRegisterListener;
 import cn.ucloud.unvs.sdk.listener.UnvsVerifyMobileListener;
 import cn.ucloud.unvs.sdk.util.PermissionUtil;
@@ -38,7 +42,7 @@ import cn.ucloud.unvs.sdk.listener.UnvsPreloadListener;
 import cn.ucloud.unvs.sdk.listener.UnvsTokenListener;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener,
-        UnvsRegisterListener, UnvsPreloadListener, UnvsTokenListener, UnvsVerifyMobileListener {
+    UnvsRegisterListener, UnvsPreloadListener, UnvsTokenListener, UnvsVerifyMobileListener {
     private final String TAG = getClass().getSimpleName();
 
     private UnvsManager unvs;
@@ -75,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         notifyLog(new LogBean(String.format("[current timeout]: %d ms", timeout)));
         network = unvs.getNetworkInfo();
         notifyLog(new LogBean(String.format("[network]: %s %s",
-                network.getNetworkType().name(), network.getOperatorType().name())));
+            network.getNetworkType().name(), network.getOperatorType().name())));
     }
 
     @Override
@@ -108,10 +112,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String timeout = edit_overtime.getText().toString();
                 if (timeout == null || timeout.isEmpty()) {
                     AlertDialog dialog = new AlertDialog.Builder(this)
-                            .setTitle("Error")
-                            .setMessage("Please input valid timeout value!")
-                            .setCancelable(true)
-                            .create();
+                        .setTitle("Error")
+                        .setMessage("Please input valid timeout value!")
+                        .setCancelable(true)
+                        .create();
                     dialog.show();
                     return;
                 }
@@ -126,9 +130,52 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
             case R.id.btn_login: {
                 unvs.setAuthThemeConfigure(DefaultTheme.defaultActivityConfig(this)
-                        .setAuthContentView(initActivityView(this, false))
-                        .setStatusBar(getColor(R.color.white), true)
-                        .build());
+                    .setAuthContentView(initActivityView(this, false))
+                    .setStatusBar(getColor(R.color.white), true)
+                    /**
+                     * setEnableDialogBackButton 只对对话框形式的授权页面有效
+                     */
+                    .setEnableDialogBackButton(true)
+                    .setPrivacyCheckedChangeListener(new UnvsPrivacyCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(boolean b) {
+                            /**
+                             * 回调条款勾选框check状态
+                             */
+                            Log.i("TEST", "onCheckedChanged->" + b);
+                        }
+                    })
+                    .setLogBtnClickListener(new UnvsLoginClickListener() {
+                        @Override
+                        public void onLoginClickStart(Context context) {
+                            Log.i("TEST", "onLoginClickStart");
+                        }
+
+                        @Override
+                        public void onLoginClickComplete(Context context) {
+                            Log.i("TEST", "onLoginClickComplete");
+                            unvs.quitLoginAuth();
+                        }
+                    })
+                    .setBackPressedListener(new UnvsBackPressListener() {
+                        @Override
+                        public void onBackPressed() {
+                            /**
+                             * 回调返回键点击
+                             */
+                            Log.i("TEST", "onBackPressed");
+                        }
+                    })
+                    .setCheckBoxListener(new UnvsCheckBoxListener() {
+                        @Override
+                        public void onLoginClick(Context context) {
+                            /**
+                             * 该回调只在没有勾选条款的情况下点击"一键登录"时才会回调
+                             */
+                            Log.i("TEST", "onLoginClick");
+                        }
+                    })
+                    .build());
 
                 unvs.loginAuth(this);
                 break;
@@ -138,25 +185,154 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
                 }
                 unvs.setAuthThemeConfigure(DefaultTheme.defaultActivityLandscapeConfig(this)
-                        .setAuthContentView(initActivityView(this, true))
-                        .setStatusBar(getColor(R.color.white), true)
-                        .build());
+                    .setAuthContentView(initActivityView(this, true))
+                    .setStatusBar(getColor(R.color.white), true)
+                    /**
+                     * setEnableDialogBackButton 只对对话框形式的授权页面有效
+                     */
+                    .setEnableDialogBackButton(true)
+                    .setPrivacyCheckedChangeListener(new UnvsPrivacyCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(boolean b) {
+                            /**
+                             * 回调条款勾选框check状态
+                             */
+                            Log.i("TEST", "onCheckedChanged->" + b);
+                        }
+                    })
+                    .setLogBtnClickListener(new UnvsLoginClickListener() {
+                        @Override
+                        public void onLoginClickStart(Context context) {
+                            Log.i("TEST", "onLoginClickStart");
+                        }
+
+                        @Override
+                        public void onLoginClickComplete(Context context) {
+                            Log.i("TEST", "onLoginClickComplete");
+                            unvs.quitLoginAuth();
+                        }
+                    })
+                    .setBackPressedListener(new UnvsBackPressListener() {
+                        @Override
+                        public void onBackPressed() {
+                            /**
+                             * 回调返回键点击
+                             */
+                            Log.i("TEST", "onBackPressed");
+                        }
+                    })
+                    .setCheckBoxListener(new UnvsCheckBoxListener() {
+                        @Override
+                        public void onLoginClick(Context context) {
+                            /**
+                             * 该回调只在没有勾选条款的情况下点击"一键登录"时才会回调
+                             */
+                            Log.i("TEST", "onLoginClick");
+                        }
+                    })
+                    .build());
 
                 unvs.loginAuth(this);
                 break;
             }
             case R.id.btn_login_dialog: {
                 unvs.setAuthThemeConfigure(DefaultTheme.defaultDialogConfig(this)
-                        .setAuthContentView(initDialogView(this))
-                        .build());
+                    .setAuthContentView(initDialogView(this))
+                    /**
+                     * setEnableDialogBackButton 只对对话框形式的授权页面有效
+                     */
+                    .setEnableDialogBackButton(true)
+                    .setPrivacyCheckedChangeListener(new UnvsPrivacyCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(boolean b) {
+                            /**
+                             * 回调条款勾选框check状态
+                             */
+                            Log.i("TEST", "onCheckedChanged->" + b);
+                        }
+                    })
+                    .setLogBtnClickListener(new UnvsLoginClickListener() {
+                        @Override
+                        public void onLoginClickStart(Context context) {
+                            Log.i("TEST", "onLoginClickStart");
+                        }
+
+                        @Override
+                        public void onLoginClickComplete(Context context) {
+                            Log.i("TEST", "onLoginClickComplete");
+                            unvs.quitLoginAuth();
+                        }
+                    })
+                    .setBackPressedListener(new UnvsBackPressListener() {
+                        @Override
+                        public void onBackPressed() {
+                            /**
+                             * 回调返回键点击
+                             */
+                            Log.i("TEST", "onBackPressed");
+                        }
+                    })
+                    .setCheckBoxListener(new UnvsCheckBoxListener() {
+                        @Override
+                        public void onLoginClick(Context context) {
+                            /**
+                             * 该回调只在没有勾选条款的情况下点击"一键登录"时才会回调
+                             */
+                            Log.i("TEST", "onLoginClick");
+                        }
+                    })
+                    .build());
 
                 unvs.loginAuth(this);
                 break;
             }
             case R.id.btn_login_dialog_bottom: {
                 unvs.setAuthThemeConfigure(DefaultTheme.defaultDialogBottomConfig(this)
-                        .setAuthContentView(initDialogBottomView(this))
-                        .build());
+                    .setAuthContentView(initDialogBottomView(this))
+                    /**
+                     * setEnableDialogBackButton 只对对话框形式的授权页面有效
+                     */
+                    .setEnableDialogBackButton(true)
+                    .setPrivacyCheckedChangeListener(new UnvsPrivacyCheckedChangeListener() {
+                        @Override
+                        public void onCheckedChanged(boolean b) {
+                            /**
+                             * 回调条款勾选框check状态
+                             */
+                            Log.i("TEST", "onCheckedChanged->" + b);
+                        }
+                    })
+                    .setLogBtnClickListener(new UnvsLoginClickListener() {
+                        @Override
+                        public void onLoginClickStart(Context context) {
+                            Log.i("TEST", "onLoginClickStart");
+                        }
+
+                        @Override
+                        public void onLoginClickComplete(Context context) {
+                            Log.i("TEST", "onLoginClickComplete");
+                            unvs.quitLoginAuth();
+                        }
+                    })
+                    .setBackPressedListener(new UnvsBackPressListener() {
+                        @Override
+                        public void onBackPressed() {
+                            /**
+                             * 回调返回键点击
+                             */
+                            Log.i("TEST", "onBackPressed");
+                        }
+                    })
+                    .setCheckBoxListener(new UnvsCheckBoxListener() {
+                        @Override
+                        public void onLoginClick(Context context) {
+                            /**
+                             * 该回调只在没有勾选条款的情况下点击"一键登录"时才会回调
+                             */
+                            Log.i("TEST", "onLoginClick");
+                        }
+                    })
+                    .build());
 
                 unvs.loginAuth(this);
                 break;
@@ -171,7 +347,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e(TAG, "onActivityResult->[requestCode]:" + requestCode);
+        Log.i(TAG, "onActivityResult->[requestCode]:" + requestCode);
     }
 
     private View.OnClickListener clickListener = v -> {
@@ -197,7 +373,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private View initActivityView(Context context, boolean isLandscape) {
         View contentView = LayoutInflater.from(context).inflate(
-                isLandscape ? R.layout.unvs_activity_landscape_content : R.layout.unvs_activity_content, null);
+            isLandscape ? R.layout.unvs_activity_landscape_content : R.layout.unvs_activity_content, null);
         int supportStringId = 0;
         switch (network.getOperatorType()) {
             case CMCC:
@@ -287,10 +463,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             notifyLog(new LogBean("Regist failed!\n[exception]:" + exception.getMessage()));
             AlertDialog dialog = new AlertDialog.Builder(this)
-                    .setTitle("Error")
-                    .setMessage(exception.getMessage())
-                    .setCancelable(true)
-                    .create();
+                .setTitle("Error")
+                .setMessage(exception.getMessage())
+                .setCancelable(true)
+                .create();
             dialog.show();
         }
     }
@@ -303,7 +479,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onPreloadFailed(int requestCode, Exception exception) {
-        Log.e(TAG, String.format("[preload failed]: code=%d", requestCode), exception);
+        Log.w(TAG, String.format("[preload failed]: code=%d", requestCode), exception);
         notifyLog(new LogBean(String.format("[preload failed]: code=%d\n[exception]:%s", requestCode, exception.getMessage())));
     }
 
@@ -321,7 +497,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onGetTokenFailed(int requestCode, Exception exception) {
-        Log.e(TAG, String.format("[token failed]: code=%d", requestCode), exception);
+        Log.w(TAG, String.format("[token failed]: code=%d", requestCode), exception);
         notifyLog(new LogBean(String.format("[token failed]: code=%d\n[exception]:%s", requestCode, exception.getMessage())));
     }
 
@@ -333,7 +509,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onVerifiedFailed(int requestCode, Exception exception) {
-        Log.e(TAG, String.format("[verify mobile failed]: code=%d", requestCode), exception);
+        Log.w(TAG, String.format("[verify mobile failed]: code=%d", requestCode), exception);
         notifyLog(new LogBean(String.format("[verify mobile failed]: code=%d\n[exception]:%s", requestCode, exception.getMessage())));
     }
 
