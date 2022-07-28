@@ -16,7 +16,7 @@ UNVS 手机号一键登录SDK Demo for Android
 
 ``` java
 implementation 'com.google.code.gson:gson:2.8.8'
-implementation files('libs/unvs-sdk-android.aar')
+implementation files('libs/unvs-sdk-android_x.x.x.aar')
 ```
 
 ## proguard-rules.pro
