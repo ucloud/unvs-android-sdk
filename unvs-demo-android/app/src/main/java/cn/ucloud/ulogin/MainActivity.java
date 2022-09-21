@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,7 +58,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ActionBar supportActionBar = getSupportActionBar();
-        supportActionBar.setBackgroundDrawable(new ColorDrawable(getColor(R.color.color_primary_unable)));
+        supportActionBar.setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.color_primary_unable)));
         supportActionBar.setTitle(String.format("UNVS SDK(%s)", UnvsManager.sdkVersion()));
         edit_overtime = findViewById(R.id.edit_timeout);
         recycler_logs = findViewById(R.id.recycler_logs);
@@ -80,29 +81,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         network = unvs.getNetworkInfo();
         notifyLog(new LogBean(String.format("[network]: %s %s",
             network.getNetworkType().name(), network.getOperatorType().name())));
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        if (!PermissionUtil.checkPermission(this, Manifest.permission.READ_PHONE_STATE)) {
-            Toast.makeText(this, "请授权手机状态权限", Toast.LENGTH_SHORT).show();
-            PermissionUtil.requestPermissions(this, new String[]{Manifest.permission.READ_PHONE_STATE}, 1000);
-        }
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode != 1000) return;
-
-        int size = permissions == null ? 0 : permissions.length;
-        for (int i = 0; i < size; i++) {
-            if (Manifest.permission.READ_PHONE_STATE.equals(permissions[i]) && grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                Toast.makeText(this, "请授权手机状态权限", Toast.LENGTH_LONG).show();
-                return;
-            }
-        }
     }
 
     @Override
@@ -131,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_login: {
                 unvs.setAuthThemeConfigure(DefaultTheme.defaultActivityConfig(this)
                     .setAuthContentView(initActivityView(this, false))
-                    .setStatusBar(getColor(R.color.white), true)
+                    .setStatusBar(ContextCompat.getColor(this, R.color.white), true)
                     /**
                      * setEnableDialogBackButton 只对对话框形式的授权页面有效
                      */
@@ -186,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 unvs.setAuthThemeConfigure(DefaultTheme.defaultActivityLandscapeConfig(this)
                     .setAuthContentView(initActivityView(this, true))
-                    .setStatusBar(getColor(R.color.white), true)
+                    .setStatusBar(ContextCompat.getColor(this, R.color.white), true)
                     /**
                      * setEnableDialogBackButton 只对对话框形式的授权页面有效
                      */
@@ -483,16 +461,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         notifyLog(new LogBean(String.format("[preload failed]: code=%d\n[exception]:%s", requestCode, exception.getMessage())));
     }
 
-    private boolean justLandscape = false;
-
     @Override
     public void onGetToken(int requestCode, TokenBean token) {
         Log.d(TAG, String.format("[token]: code=%d data=%s", requestCode, token.toString()));
         notifyLog(new LogBean(String.format("[token]: code=%d data=%s", requestCode, token.toString())));
-        if (token != null && token.getResultCode().equals("200020")) {
-            if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
-                setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        }
+        if (getRequestedOrientation() == ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE)
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
     }
 
     @Override
