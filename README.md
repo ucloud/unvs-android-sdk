@@ -286,13 +286,27 @@ public Builder setWebDomStorageEnable(boolean isEnable)
  * 设置协议勾选框+协议文本的抖动动画效果，默认无抖动。
  * 注意：如果设置了setPrivacyAlertView，则该方法的设置失效。
  */
- public Builder setPrivacyAnimation(String animation)
+public Builder setPrivacyAnimation(String animation)
  /**
   * 设置未勾选协议时的弹框
   * 用户未勾选协议时，点击登录弹出弹窗，弹窗提供“同意并继续”按钮。
   * 该弹窗暂时不提供自定义样式设置。
   */
-  public Builder setPrivacyAlertViewEnable(boolean isEnable)
+public Builder setPrivacyAlertViewEnable(boolean isEnable)
+  
+/**
+ * 设置隐私条款的协议文本，自定义条款，自定义条款链接（支持四份条款）
+ *
+ * privacy：协议同意整体文案
+ * clause1~4：会将整体文案中的对应的文本改为超链接并自动添加书名号
+ * clauseUrl1~4：自定义条款的URL地址
+ *
+ * ThemeConfig.PLACEHOLDER 是运营商协议的占位符，sdk将会自动根据识别出的手机号运营商显示对应协议，法律法规要求必须添加
+ * e.g: setPrivacyAlignment("登录即同意" + ThemeConfig.PLACEHOLDER + "，以及自定义协议1和p2。", "自定义协议1", "https://www.ucloud.cn", "p2", "https://www.baidu.cn", null, null, null, null)
+ */
+public Builder setPrivacyAlignment(String privacy, String clause1, String clauseUrl1, String clause2, String clauseUrl2, String clause3, String clauseUrl3, String clause4, String clauseUrl4)
+
+
 ```
 
 ### UnvsRegisterListener

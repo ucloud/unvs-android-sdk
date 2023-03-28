@@ -27,6 +27,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.ucloud.unvs.sdk.ThemeConfig;
 import cn.ucloud.unvs.sdk.bean.NetworkInfo;
 import cn.ucloud.unvs.sdk.bean.VerifyMobileBean;
 import cn.ucloud.unvs.sdk.listener.UnvsBackPressListener;
@@ -110,6 +111,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 unvs.setAuthThemeConfigure(DefaultTheme.defaultActivityConfig(this)
                     .setAuthContentView(initActivityView(this, false))
                     .setStatusBar(ContextCompat.getColor(this, R.color.white), true)
+                    /**
+                     * 配置自定义协议
+                     * 参数1：协议同意整体文案
+                     * 参数2~9：两两一对，
+                     *      一对中的第一个：会将整体文案中的对应文本改为超链接并自动添加书名号
+                     *      一对中的第二个：是第一个参数的url地址
+                     *      最多添加4个自定义协议
+                     * {@link ThemeConfig.PLACEHOLDER} 是运营商协议的占位符，sdk将会自动根据识别出的手机号运营商显示对应协议，法律法规要求必须添加
+                     */
+                    .setPrivacyAlignment("登录即同意" + ThemeConfig.PLACEHOLDER + "，以及自定义协议1和自定义协议2。", "自定义协议1", "https://www.baidu.com", "自定义协议2", "https://www.ucloud.cn", null, null, null, null)
                     /**
                      * setEnableDialogBackButton 只对对话框形式的授权页面有效
                      */
